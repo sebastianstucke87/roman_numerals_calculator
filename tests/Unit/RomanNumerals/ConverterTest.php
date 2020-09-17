@@ -83,7 +83,7 @@ final class ConverterTest extends TestCase
     {
         // array schema: [arabic, roman]
         return [
-            [10, 'XI'],
+            [11, 'XI'],
             [20, 'XX'],
             [30, 'XXX'],
             [40, 'XL'],
