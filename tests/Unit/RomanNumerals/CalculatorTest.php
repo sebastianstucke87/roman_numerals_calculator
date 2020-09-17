@@ -9,7 +9,7 @@ use RomanNumeralsCalculator\Calculator;
 
 final class CalculatorTest extends TestCase
 {
-    public function test_it_needs_at_least_one_number()
+    public function test_it_needs_at_least_one_number(): void
     {
         // arrange
         $sut = new Calculator();
@@ -18,10 +18,10 @@ final class CalculatorTest extends TestCase
         $this->expectException(LogicException::class);
 
         // act
-        $result = $sut->sum();
+        $sut->sum();
     }
 
-    public function test_it_can_add_one_number()
+    public function test_it_can_add_one_number(): void
     {
         // arrange
         $sut = new Calculator();
@@ -33,7 +33,7 @@ final class CalculatorTest extends TestCase
         $this->assertEquals(1, $result);
     }
 
-    public function test_it_can_add_multiple_numbers()
+    public function test_it_can_add_multiple_numbers(): void
     {
         // arrange
         $sut = new Calculator();

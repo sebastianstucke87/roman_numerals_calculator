@@ -16,7 +16,7 @@ final class ConverterTest extends TestCase
      * @dataProvider provide_wikipedia_examples
      * @dataProvider provide_edge_cases
      */
-    public function test_it_can_convert_from_roman_to_arabic_numerals(int $arabic, string $roman)
+    public function test_it_can_convert_from_roman_to_arabic_numerals(int $arabic, string $roman): void
     {
         // arrange
         $sut = new Converter();
@@ -36,7 +36,7 @@ final class ConverterTest extends TestCase
      * @dataProvider provide_wikipedia_examples
      * @dataProvider provide_edge_cases
      */
-    public function test_it_can_convert_from_arabic_to_roman_numerals(int $arabic, string $roman)
+    public function test_it_can_convert_from_arabic_to_roman_numerals(int $arabic, string $roman): void
     {
         // arrange
         $sut = new Converter();
@@ -48,7 +48,7 @@ final class ConverterTest extends TestCase
         $this->assertEquals($roman, $result);
     }
 
-    public function provide_basic_schema()
+    public function provide_basic_schema(): array
     {
         // array schema: [arabic, roman]
         return [
@@ -62,7 +62,7 @@ final class ConverterTest extends TestCase
         ];
     }
 
-    public function provide_basic_singles()
+    public function provide_basic_singles(): array
     {
         // array schema: [arabic, roman]
         return [
@@ -79,7 +79,7 @@ final class ConverterTest extends TestCase
         ];
     }
 
-    public function provide_basic_tenths()
+    public function provide_basic_tenths(): array
     {
         // array schema: [arabic, roman]
         return [
@@ -96,7 +96,7 @@ final class ConverterTest extends TestCase
         ];
     }
 
-    public function provide_basic_hundreds()
+    public function provide_basic_hundreds(): array
     {
         // array schema: [arabic, roman]
         return [
@@ -116,7 +116,7 @@ final class ConverterTest extends TestCase
     /**
      * @see "Standard form": https://en.wikipedia.org/wiki/Roman_numerals
      */
-    public function provide_wikipedia_examples()
+    public function provide_wikipedia_examples(): array
     {
         // array schema: [arabic, roman]
         return [
@@ -148,7 +148,7 @@ final class ConverterTest extends TestCase
         ];
     }
 
-    public function provide_edge_cases()
+    public function provide_edge_cases(): array
     {
         // array schema: [arabic, roman]
         return [
