@@ -15,6 +15,9 @@ final class RomanNumeralsCalculator
         $this->converter = $converter;
     }
 
+    /**
+     * @todo sebs: implement
+     */
     public function __invoke(string ...$romanNumerals): int
     {
         // NOP
