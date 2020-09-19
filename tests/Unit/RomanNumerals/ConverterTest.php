@@ -161,6 +161,7 @@ final class ConverterTest extends TestCase
     {
         // array schema: [arabic, roman]
         return [
+            '3 - II I' => [3, 'II I'],
             '1 - i' => [1, 'i'],
             '5 - v' => [5, 'v'],
             '10 - x' => [10, 'x'],

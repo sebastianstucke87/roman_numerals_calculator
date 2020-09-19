@@ -20,39 +20,43 @@ final class Converter
     ];
 
     /**
-     * @example: "III" -> 3
+     * @example:
+     *     - "III" -> 3
+     *     - "II I" -> 3
      */
     public function toArabic(string $romanNumeral): int
     {
-        $romanNumeral = strtolower(trim($romanNumeral));
-        $result = [];
+        $trim = preg_replace('/\s+/', '', $romanNumeral);
+        $lower = strtolower($trim);
+        $parts = mb_str_split($lower);
+        $totalParts = count($parts);
 
-        $mbStrSplit = mb_str_split($romanNumeral);
-        $totalParts = count($mbStrSplit);
-
-        // "iv" -> 4
-        $total = 0;
+        $result = 0;
         for ($i = 0; $i <= ($totalParts - 1); $i++) {
-            $currentPart = $mbStrSplit[$i];
+            $currentPart = $parts[$i];
             $currentNumber = $this->naiveLookup($currentPart);
             $nextIndex = $i + 1;
 
+            // Is there a next part after the current part?
             if ($nextIndex <= $totalParts-1) {
-                $nextPart = $mbStrSplit[$nextIndex];
+                $nextPart = $parts[$nextIndex];
                 $nextNumber = $this->naiveLookup($nextPart);
 
+                // Is the current number smaller than the next number?
                 if ($currentNumber < $nextNumber) {
-                    $total += $nextNumber - $currentNumber;
+                    // Example "IV -> 4": Parts are "1" and "5". The check "1 < 5" yield true, resulting in "5 - 1 = 4".
+                    $result += $nextNumber - $currentNumber;
+                    // Modify outer-scope index to skip the next iteration b/c the nextNumber has already been processed.
                     $i++;
 
                     continue;
                 }
             }
 
-            $total += $currentNumber;
+            $result += $currentNumber;
         }
 
-        return $total;
+        return $result;
     }
 
     /**
@@ -63,10 +67,10 @@ final class Converter
         // NOP
     }
 
-    private function naiveLookup($currentPart): int
+    private function naiveLookup(string $romanNumeral): int
     {
-        Assert::that(self::MAP)->keyExists($currentPart);
+        Assert::that(self::MAP)->keyExists($romanNumeral);
 
-        return self::MAP[$currentPart];
+        return self::MAP[$romanNumeral];
     }
 }
