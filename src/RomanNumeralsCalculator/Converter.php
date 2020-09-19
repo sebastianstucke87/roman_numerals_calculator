@@ -44,7 +44,8 @@ final class Converter
 
                 // Is the current number smaller than the next number?
                 if ($currentNumber < $nextNumber) {
-                    // Example "IV -> 4": Parts are "1" and "5". The check "1 < 5" yield true, resulting in "5 - 1 = 4".
+                    // Example "IV -> 4": The parts are "1" and "5",
+                    // the check "1 < 5" yields true, resulting in "5 - 1 = 4".
                     $result += $nextNumber - $currentNumber;
                     // Modify outer-scope index to skip the next iteration b/c the nextNumber has already been processed.
                     $i++;
