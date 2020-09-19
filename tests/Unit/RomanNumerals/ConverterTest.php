@@ -20,7 +20,7 @@ final class ConverterTest extends TestCase
         $this->expectException(LogicException::class);
 
         // act
-        $result = $sut->toArabic('a');
+        $sut->toArabic('a');
     }
 
     /**
