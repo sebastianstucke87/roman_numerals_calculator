@@ -1,6 +1,6 @@
 {
   "name": "sebastianstucke87/roman_numerals_calculator",
-  "type": "project",
+  "type": "library",
   "license": "MIT",
   "authors": [
     {
