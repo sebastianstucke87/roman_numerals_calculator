@@ -3,13 +3,14 @@ declare(strict_types=1);
 
 namespace RomanNumeralsCalculator;
 
+use Assert\Assert;
+
 final class Calculator
 {
-    /**
-     * @todo sebs: implement
-     */
     public function sum(int ...$numbers): int
     {
-        // NOP
+        Assert::that($numbers)->notEmpty();
+
+        return array_sum($numbers);
     }
 }
