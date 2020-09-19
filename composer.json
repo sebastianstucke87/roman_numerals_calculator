@@ -8,8 +8,12 @@
       "email": "sebastianstucke87@gmail.com"
     }
   ],
+  "require": {
+    "beberlei/assert": "^3.2"
+  },
   "require-dev": {
-    "phpunit/phpunit": "^9.0"
+    "roave/security-advisories": "dev-master",
+    "phpunit/phpunit": "^9.3"
   },
   "autoload": {
     "psr-4": {
@@ -26,6 +30,9 @@
     "apcu-autoloader": true,
     "discard-changes": true,
     "optimize-autoloader": true,
-    "sort-packages": true
+    "sort-packages": true,
+    "platform": {
+      "php": "7.4"
+    }
   }
 }
