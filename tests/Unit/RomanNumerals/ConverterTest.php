@@ -3,11 +3,26 @@ declare(strict_types=1);
 
 namespace Unit\RomanNumerals;
 
+use LogicException;
 use PHPUnit\Framework\TestCase;
+use RomanNumeralsCalculator\Calculator;
 use RomanNumeralsCalculator\Converter;
+use RomanNumeralsCalculator\RomanNumeralsCalculator;
 
 final class ConverterTest extends TestCase
 {
+    public function test_it_does_not_convert_invalid_roman_numerals(): void
+    {
+        // arrange
+        $sut = new Converter();
+
+        // assert
+        $this->expectException(LogicException::class);
+
+        // act
+        $result = $sut->toArabic('a');
+    }
+
     /**
      * @dataProvider provide_basic_schema
      * @dataProvider provide_basic_singles
