@@ -3,58 +3,47 @@ declare(strict_types=1);
 
 namespace RomanNumeralsCalculator;
 
+use Assert\Assert;
 use function Safe\mb_str_split;
 
 final class Converter
 {
+    /** @var array */
+    private const MAP = [
+        'i' => 1,
+        'v' => 5,
+        'x' => 10,
+        'l' => 50,
+        'c' => 100,
+        'd' => 500,
+        'm' => 1000,
+    ];
+
     /**
      * @example: "III" -> 3
      */
     public function toArabic(string $romanNumeral): int
     {
         $romanNumeral = strtolower(trim($romanNumeral));
-
-        $map = [
-            'i' => 1,
-            'v' => 5,
-            'x' => 10,
-            'l' => 50,
-            'c' => 100,
-            'd' => 500,
-            'm' => 1000,
-        ];
-
         $result = [];
 
-        $romanNumeralsAsArray = mb_str_split($romanNumeral);
+        $mbStrSplit = mb_str_split($romanNumeral);
+        $totalParts = count($mbStrSplit);
 
-        foreach ($romanNumeralsAsArray as $index => $currentPart) {
-
-            if (!array_key_exists($currentPart, $map)) {
-                // NOOP
-            }
-
-            $result[] = $map[$currentPart];
-
-        }
-
+        // "iv" -> 4
         $total = 0;
-        $totalParts = count($result);
-        $skip = false;
-        foreach ($result as $index => $currentNumber) {
+        for ($i = 0; $i <= ($totalParts - 1); $i++) {
+            $currentPart = $mbStrSplit[$i];
+            $currentNumber = $this->naiveLookup($currentPart);
+            $nextIndex = $i + 1;
 
-            if ($skip) {
-                $skip = false;
-                continue;
-            }
-
-            $nextIndex = $index + 1;
             if ($nextIndex <= $totalParts-1) {
-                $nextNumber = $result[$nextIndex];
+                $nextPart = $mbStrSplit[$nextIndex];
+                $nextNumber = $this->naiveLookup($nextPart);
 
                 if ($currentNumber < $nextNumber) {
                     $total += $nextNumber - $currentNumber;
-                    $skip = true;
+                    $i++;
 
                     continue;
                 }
@@ -72,5 +61,12 @@ final class Converter
     public function toRoman(int $arabic): string
     {
         // NOP
+    }
+
+    private function naiveLookup($currentPart): int
+    {
+        Assert::that(self::MAP)->keyExists($currentPart);
+
+        return self::MAP[$currentPart];
     }
 }
