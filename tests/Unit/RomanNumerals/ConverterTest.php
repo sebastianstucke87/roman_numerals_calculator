@@ -92,7 +92,6 @@ final class ConverterTest extends TestCase
             '70 - LXX' => [70, 'LXX'],
             '80 - LXXX' => [80, 'LXXX'],
             '90 - XC' => [90, 'XC'],
-            '100 - C' => [100, 'C'],
         ];
     }
 
@@ -100,6 +99,7 @@ final class ConverterTest extends TestCase
     {
         // array schema: [arabic, roman]
         return [
+            '100 - C' => [100, 'C'],
             '200 - CC' => [200, 'CC'],
             '300 - CCC' => [300, 'CCC'],
             '400 - CD' => [400, 'CD'],
@@ -161,7 +161,6 @@ final class ConverterTest extends TestCase
     {
         // array schema: [arabic, roman]
         return [
-            '3 - II I' => [3, 'II I'],
             '1 - i' => [1, 'i'],
             '5 - v' => [5, 'v'],
             '10 - x' => [10, 'x'],
@@ -169,6 +168,8 @@ final class ConverterTest extends TestCase
             '100 - c' => [100, 'c'],
             '500 - d' => [500, 'd'],
             '1000 - m' => [1000, 'm'],
+            '3 - "II I"' => [3, 'II I'],
+            '3 - " II I  "' => [3, ' II I  '],
         ];
     }
 }
