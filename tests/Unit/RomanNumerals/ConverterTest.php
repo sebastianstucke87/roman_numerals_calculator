@@ -5,9 +5,7 @@ namespace Unit\RomanNumerals;
 
 use LogicException;
 use PHPUnit\Framework\TestCase;
-use RomanNumeralsCalculator\Calculator;
 use RomanNumeralsCalculator\Converter;
-use RomanNumeralsCalculator\RomanNumeralsCalculator;
 
 final class ConverterTest extends TestCase
 {

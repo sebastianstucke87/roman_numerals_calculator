@@ -38,7 +38,7 @@ final class Converter
             $nextIndex = $i + 1;
 
             // Is there a next part after the current part?
-            if ($nextIndex <= $totalParts-1) {
+            if ($nextIndex <= $totalParts - 1) {
                 $nextPart = $parts[$nextIndex];
                 $nextNumber = $this->naiveLookup($nextPart);
 
