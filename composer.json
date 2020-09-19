@@ -9,7 +9,8 @@
     }
   ],
   "require": {
-    "beberlei/assert": "^3.2"
+    "beberlei/assert": "^3.2",
+    "thecodingmachine/safe": "^1.2"
   },
   "require-dev": {
     "roave/security-advisories": "dev-master",
