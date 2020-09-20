@@ -1,5 +1,6 @@
 {
   "name": "sebastianstucke87/roman_numerals_calculator",
+  "description": "A basic calculator for roman numerals from 'I (1)' to 'MMMCMXCIX (3999)'",
   "type": "library",
   "license": "MIT",
   "authors": [
@@ -9,6 +10,7 @@
     }
   ],
   "require": {
+    "php": "^7.4",
     "beberlei/assert": "^3.2",
     "thecodingmachine/safe": "^1.2"
   },
@@ -23,8 +25,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "SmokeTest\\": "tests/Smoke",
-      "UnitTest\\": "tests/Unit"
+      "RomanNumeralsCalculator\\": "tests/RomanNumeralsCalculator"
     }
   },
   "config": {
