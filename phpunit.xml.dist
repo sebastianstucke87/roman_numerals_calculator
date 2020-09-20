@@ -16,11 +16,14 @@
         </report>
     </coverage>
     <testsuites>
-        <testsuite name="Smoke">
-            <directory suffix="Test.php">tests/Smoke</directory>
+        <testsuite name="SmokeTests">
+            <directory suffix="Test.php">tests/RomanNumeralsCalculator/SmokeTest</directory>
         </testsuite>
-        <testsuite name="RomanNumerals">
-            <directory suffix="Test.php">tests/Unit/RomanNumerals</directory>
+        <testsuite name="IntegrationTest">
+            <directory suffix="Test.php">tests/RomanNumeralsCalculator/IntegrationTest</directory>
+        </testsuite>
+        <testsuite name="UnitTest">
+            <directory suffix="Test.php">tests/RomanNumeralsCalculator/UnitTest</directory>
         </testsuite>
     </testsuites>
     <logging>
