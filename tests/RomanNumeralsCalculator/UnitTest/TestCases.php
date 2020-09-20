@@ -1,69 +1,15 @@
 <?php
 declare(strict_types=1);
 
-namespace Unit\RomanNumerals;
+namespace RomanNumeralsCalculator\UnitTest;
 
-use LogicException;
-use PHPUnit\Framework\TestCase;
-use RomanNumeralsCalculator\Converter;
-
-final class ConverterTest extends TestCase
+/**
+ * Array schema: "[arabic, roman]"
+ */
+final class TestCases
 {
-    public function test_it_does_not_convert_invalid_roman_numerals(): void
+    public static function provide_basic_schema(): array
     {
-        // arrange
-        $sut = new Converter();
-
-        // assert
-        $this->expectException(LogicException::class);
-
-        // act
-        $sut->toArabic('a');
-    }
-
-    /**
-     * @dataProvider provide_basic_schema
-     * @dataProvider provide_basic_singles
-     * @dataProvider provide_basic_tenths
-     * @dataProvider provide_basic_hundreds
-     * @dataProvider provide_wikipedia_examples
-     * @dataProvider provide_roman_edge_cases
-     */
-    public function test_it_can_convert_from_roman_to_arabic_numerals(int $arabic, string $roman): void
-    {
-        // arrange
-        $sut = new Converter();
-
-        // act
-        $result = $sut->toArabic($roman);
-
-        // assert
-        $this->assertEquals($arabic, $result);
-    }
-
-    /**
-     * @dataProvider provide_basic_schema
-     * @dataProvider provide_basic_singles
-     * @dataProvider provide_basic_tenths
-     * @dataProvider provide_basic_hundreds
-     * @dataProvider provide_wikipedia_examples
-     * @dataProvider provide_arabic_edge_cases
-     */
-    public function test_it_can_convert_from_arabic_to_roman_numerals(int $arabic, string $roman): void
-    {
-        // arrange
-        $sut = new Converter();
-
-        // act
-        $result = $sut->toRoman($arabic);
-
-        // assert
-        $this->assertEquals($roman, $result);
-    }
-
-    public function provide_basic_schema(): array
-    {
-        // array schema: [arabic, roman]
         return [
             "1 - I" => [1, 'I'],
             "5 - V" => [5, 'V'],
@@ -75,9 +21,8 @@ final class ConverterTest extends TestCase
         ];
     }
 
-    public function provide_basic_singles(): array
+    public static function provide_basic_singles(): array
     {
-        // array schema: [arabic, roman]
         return [
             '1 - I' => [1, 'I'],
             '2 - II' => [2, 'II'],
@@ -92,9 +37,8 @@ final class ConverterTest extends TestCase
         ];
     }
 
-    public function provide_basic_tenths(): array
+    public static function provide_basic_tenths(): array
     {
-        // array schema: [arabic, roman]
         return [
             '11 - XI' => [11, 'XI'],
             '20 - XX' => [20, 'XX'],
@@ -108,9 +52,8 @@ final class ConverterTest extends TestCase
         ];
     }
 
-    public function provide_basic_hundreds(): array
+    public static function provide_basic_hundreds(): array
     {
-        // array schema: [arabic, roman]
         return [
             '100 - C' => [100, 'C'],
             '200 - CC' => [200, 'CC'],
@@ -129,19 +72,16 @@ final class ConverterTest extends TestCase
     /**
      * @see "Standard form": https://en.wikipedia.org/wiki/Roman_numerals
      */
-    public function provide_wikipedia_examples(): array
+    public static function provide_wikipedia_examples(): array
     {
-        // array schema: [arabic, roman]
         return [
             '4 - IV' => [4, 'IV'],
-            '9 - VIIII' => [9, 'VIIII'],
             '14 - XIV' => [14, 'XIV'],
             '18 - XVIII' => [18, 'XVIII'],
             '19 - XIX' => [19, 'XIX'],
             '39 - XXXIX' => [39, 'XXXIX'],
             '40 - XL' => [40, 'XL'],
             '45 - XLV' => [45, 'XLV'],
-            '90 - LXXXX' => [90, 'LXXXX'],
             '90 - XC' => [90, 'XC'],
             '99 - XCIX' => [99, 'XCIX'],
             '160 - CLX' => [160, 'CLX'],
@@ -149,7 +89,6 @@ final class ConverterTest extends TestCase
             '246 - CCXLVI' => [246, 'CCXLVI'],
             '400 - CD' => [400, 'CD'],
             '789 - DCCLXXXIX' => [789, 'DCCLXXXIX'],
-            '900 - DCCCC' => [900, 'DCCCC'],
             '1009 - MIX' => [1009, 'MIX'],
             '1066 - MLXVI' => [1066, 'MLXVI'],
             '1776 - MDCCLXXVI' => [1776, 'MDCCLXXVI'],
@@ -158,21 +97,27 @@ final class ConverterTest extends TestCase
             '1954 - MCMLIV' => [1954, 'MCMLIV'],
             '2014 - MMXIV' => [2014, 'MMXIV'],
             '2421 - MMCDXXI' => [2421, 'MMCDXXI'],
+            '3999 - MMMCMXCIX' => [3999, 'MMMCMXCIX'],
         ];
     }
 
-    public function provide_arabic_edge_cases(): array
+    public static function provide_vinculum_edge_cases(): array
     {
-        // array schema: [arabic, roman]
+        return [
+            '3999999 - MMMCMXCIXCMXCIX' => [3999999, 'MMMCMXCIXCMXCIX'],
+        ];
+    }
+
+    public static function provide_arabic_edge_cases(): array
+    {
         return [
             '-1 - ""' => [-1, ''],
             '0 - ""' => [0, ''],
         ];
     }
 
-    public function provide_roman_edge_cases()
+    public static function provide_roman_edge_cases()
     {
-        // array schema: [arabic, roman]
         return [
             '1 - i' => [1, 'i'],
             '5 - v' => [5, 'v'],
@@ -183,6 +128,9 @@ final class ConverterTest extends TestCase
             '1000 - m' => [1000, 'm'],
             '3 - "II I"' => [3, 'II I'],
             '3 - " II I  "' => [3, ' II I  '],
+            '9 - VIIII' => [9, 'VIIII'],
+            '90 - LXXXX' => [90, 'LXXXX'],
+            '900 - DCCCC' => [900, 'DCCCC'],
         ];
     }
 }
