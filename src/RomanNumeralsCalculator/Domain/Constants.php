@@ -19,12 +19,12 @@ final class Constants
         'l' => 50,
         'c' => 100,
         'd' => 500,
-        'm' => 1000,
+        'm' => 1_000,
     ];
 
     /** @var array */
     public const ARABIC_MAP = [
-        'M' => 1000,
+        'M' => 1_000,
         'CM' => 900,
         'D' => 500,
         'CD' => 400,
