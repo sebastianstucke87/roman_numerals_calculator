@@ -85,7 +85,7 @@ final class CalculatorTest extends TestCase
         $result = $sut->sum(['MMMCMXCVIII', 'I']);
 
         // assert
-        self::assertEquals(3999, $result->arabicNumeral());
+        self::assertEquals(3_999, $result->arabicNumeral());
         self::assertEquals('MMMCMXCIX', $result->romanNumeral());
     }
 }

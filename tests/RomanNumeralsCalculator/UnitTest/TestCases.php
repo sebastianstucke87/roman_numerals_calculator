@@ -17,7 +17,7 @@ final class TestCases
             "50 - L" => [50, 'L'],
             "100 - C" => [100, 'C'],
             "500 - D" => [500, 'D'],
-            "1000 - M" => [1000, 'M'],
+            "1000 - M" => [1_000, 'M'],
         ];
     }
 
@@ -64,8 +64,8 @@ final class TestCases
             '700 - DCC' => [700, 'DCC'],
             '800 - DCCC' => [800, 'DCCC'],
             '900 - CM' => [900, 'CM'],
-            '1000 - M' => [1000, 'M'],
-            '1001 -  MI' => [1001, 'MI'],
+            '1000 - M' => [1_000, 'M'],
+            '1001 -  MI' => [1_001, 'MI'],
         ];
     }
 
@@ -89,22 +89,22 @@ final class TestCases
             '246 - CCXLVI' => [246, 'CCXLVI'],
             '400 - CD' => [400, 'CD'],
             '789 - DCCLXXXIX' => [789, 'DCCLXXXIX'],
-            '1009 - MIX' => [1009, 'MIX'],
-            '1066 - MLXVI' => [1066, 'MLXVI'],
-            '1776 - MDCCLXXVI' => [1776, 'MDCCLXXVI'],
-            '1894 - MDCCCXCIV' => [1894, 'MDCCCXCIV'],
-            '1918 - MCMXVIII' => [1918, 'MCMXVIII'],
-            '1954 - MCMLIV' => [1954, 'MCMLIV'],
-            '2014 - MMXIV' => [2014, 'MMXIV'],
-            '2421 - MMCDXXI' => [2421, 'MMCDXXI'],
-            '3999 - MMMCMXCIX' => [3999, 'MMMCMXCIX'],
+            '1009 - MIX' => [1_009, 'MIX'],
+            '1066 - MLXVI' => [1_066, 'MLXVI'],
+            '1776 - MDCCLXXVI' => [1_776, 'MDCCLXXVI'],
+            '1894 - MDCCCXCIV' => [1_894, 'MDCCCXCIV'],
+            '1918 - MCMXVIII' => [1_918, 'MCMXVIII'],
+            '1954 - MCMLIV' => [1_954, 'MCMLIV'],
+            '2014 - MMXIV' => [2_014, 'MMXIV'],
+            '2421 - MMCDXXI' => [2_421, 'MMCDXXI'],
+            '3999 - MMMCMXCIX' => [3_999, 'MMMCMXCIX'],
         ];
     }
 
     public static function provide_vinculum_edge_cases(): array
     {
         return [
-            '3999999 - MMMCMXCIXCMXCIX' => [3999999, 'MMMCMXCIXCMXCIX'],
+            '3999999 - MMMCMXCIXCMXCIX' => [3_999_999, 'MMMCMXCIXCMXCIX'],
         ];
     }
 
@@ -125,7 +125,7 @@ final class TestCases
             '50 - l' => [50, 'l'],
             '100 - c' => [100, 'c'],
             '500 - d' => [500, 'd'],
-            '1000 - m' => [1000, 'm'],
+            '1000 - m' => [1_000, 'm'],
             '3 - "II I"' => [3, 'II I'],
             '3 - " II I  "' => [3, ' II I  '],
             '9 - VIIII' => [9, 'VIIII'],
